@@ -10,7 +10,8 @@ EXPOSE 80
 EXPOSE 9000
 WORKDIR /etc/
 RUN apt update
-RUN add-apt-repository ppa:openhie/release &&\
+RUN apt-get install -y software-properties-common &&\
+    add-apt-repository ppa:openhie/release &&\
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 &&\
     echo 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse' | tee /etc/apt/sources.list.d/mongodb-org-3.2.list &&\
     apt-get update &&\
