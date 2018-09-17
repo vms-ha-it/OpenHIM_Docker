@@ -10,12 +10,14 @@ EXPOSE 80
 EXPOSE 9000
 WORKDIR /etc/
 RUN apt update
-RUN apt-get install -y software-properties-common &&\
-    add-apt-repository ppa:openhie/release &&\
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 &&\
-    echo 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse' | tee /etc/apt/sources.list.d/mongodb-org-3.2.list &&\
-    apt-get update &&\
-    apt-get install -y openhim-core-js openhim-console
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:openhie/release
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+RUN echo 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse' | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+RUN apt-get update
+RUN apt install -y wget
+RUN apt-get install -y openhim-core-js 
+RUN apt-get install -y openhim-console
 #    apt install -y curl &&\
 #    apt install -y nodejs &&\
 #    apt install -y bzip2 &&\
